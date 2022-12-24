@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */; };
 		DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */; };
-		DAFB80A229571FDF00C4FA54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80A129571FDF00C4FA54 /* ViewController.swift */; };
 		DAFB80A729571FE000C4FA54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A629571FE000C4FA54 /* Assets.xcassets */; };
 		DAFB80AA29571FE000C4FA54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A829571FE000C4FA54 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,7 +17,6 @@
 		DAFB809A29571FDF00C4FA54 /* RoutesPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutesPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DAFB80A129571FDF00C4FA54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DAFB80A629571FE000C4FA54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAFB80A929571FE000C4FA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFB80AB29571FE000C4FA54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,14 +52,29 @@
 		DAFB809C29571FDF00C4FA54 /* RoutesPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */,
-				DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */,
-				DAFB80A129571FDF00C4FA54 /* ViewController.swift */,
+				DAFB80B22957248300C4FA54 /* Application */,
+				DAFB80B12957246200C4FA54 /* Resources */,
+			);
+			path = RoutesPlanner;
+			sourceTree = "<group>";
+		};
+		DAFB80B12957246200C4FA54 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				DAFB80A629571FE000C4FA54 /* Assets.xcassets */,
 				DAFB80A829571FE000C4FA54 /* LaunchScreen.storyboard */,
 				DAFB80AB29571FE000C4FA54 /* Info.plist */,
 			);
-			path = RoutesPlanner;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DAFB80B22957248300C4FA54 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */,
+				DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAFB80A229571FDF00C4FA54 /* ViewController.swift in Sources */,
 				DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */,
 				DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */,
 			);
@@ -277,7 +289,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4XKQ66453D;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RoutesPlanner/Info.plist;
+				INFOPLIST_FILE = RoutesPlanner/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -304,7 +316,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4XKQ66453D;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RoutesPlanner/Info.plist;
+				INFOPLIST_FILE = RoutesPlanner/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
