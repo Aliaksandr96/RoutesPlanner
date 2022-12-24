@@ -8,6 +8,7 @@ enum Subtitles: String {
 }
 
 final class LocationManager {
+    
     static let shared = LocationManager()
     
     private init() {}

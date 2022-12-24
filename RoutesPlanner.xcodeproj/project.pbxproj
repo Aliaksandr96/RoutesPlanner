@@ -11,6 +11,13 @@
 		DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */; };
 		DAFB80A729571FE000C4FA54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A629571FE000C4FA54 /* Assets.xcassets */; };
 		DAFB80AA29571FE000C4FA54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A829571FE000C4FA54 /* LaunchScreen.storyboard */; };
+		DAFB80B5295727A800C4FA54 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80B4295727A800C4FA54 /* Date+Extension.swift */; };
+		DAFB80B7295727D900C4FA54 /* Identifire+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80B6295727D900C4FA54 /* Identifire+Extension.swift */; };
+		DAFB80B9295727FE00C4FA54 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80B8295727FE00C4FA54 /* UIColor+Extension.swift */; };
+		DAFB80BC2957287700C4FA54 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80BB2957287700C4FA54 /* DatabaseManager.swift */; };
+		DAFB80BE2957287E00C4FA54 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80BD2957287D00C4FA54 /* LocationManager.swift */; };
+		DAFB80C1295728B200C4FA54 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DAFB80C0295728B200C4FA54 /* RealmSwift */; };
+		DAFB80C4295728C200C4FA54 /* EasyAutolayout in Frameworks */ = {isa = PBXBuildFile; productRef = DAFB80C3295728C200C4FA54 /* EasyAutolayout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +27,11 @@
 		DAFB80A629571FE000C4FA54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAFB80A929571FE000C4FA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFB80AB29571FE000C4FA54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAFB80B4295727A800C4FA54 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		DAFB80B6295727D900C4FA54 /* Identifire+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Identifire+Extension.swift"; sourceTree = "<group>"; };
+		DAFB80B8295727FE00C4FA54 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		DAFB80BB2957287700C4FA54 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		DAFB80BD2957287D00C4FA54 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFB80C1295728B200C4FA54 /* RealmSwift in Frameworks */,
+				DAFB80C4295728C200C4FA54 /* EasyAutolayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +66,8 @@
 		DAFB809C29571FDF00C4FA54 /* RoutesPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				DAFB80BA2957283100C4FA54 /* Managers */,
+				DAFB80B32957279A00C4FA54 /* Extensions */,
 				DAFB80B22957248300C4FA54 /* Application */,
 				DAFB80B12957246200C4FA54 /* Resources */,
 			);
@@ -77,6 +93,25 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		DAFB80B32957279A00C4FA54 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80B8295727FE00C4FA54 /* UIColor+Extension.swift */,
+				DAFB80B6295727D900C4FA54 /* Identifire+Extension.swift */,
+				DAFB80B4295727A800C4FA54 /* Date+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DAFB80BA2957283100C4FA54 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80BB2957287700C4FA54 /* DatabaseManager.swift */,
+				DAFB80BD2957287D00C4FA54 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,6 +128,10 @@
 			dependencies = (
 			);
 			name = RoutesPlanner;
+			packageProductDependencies = (
+				DAFB80C0295728B200C4FA54 /* RealmSwift */,
+				DAFB80C3295728C200C4FA54 /* EasyAutolayout */,
+			);
 			productName = RoutesPlanner;
 			productReference = DAFB809A29571FDF00C4FA54 /* RoutesPlanner.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +160,10 @@
 				Base,
 			);
 			mainGroup = DAFB809129571FDF00C4FA54;
+			packageReferences = (
+				DAFB80BF295728B200C4FA54 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DAFB80C2295728C200C4FA54 /* XCRemoteSwiftPackageReference "EasyAutoLayout" */,
+			);
 			productRefGroup = DAFB809B29571FDF00C4FA54 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,8 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFB80B7295727D900C4FA54 /* Identifire+Extension.swift in Sources */,
 				DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */,
+				DAFB80BC2957287700C4FA54 /* DatabaseManager.swift in Sources */,
+				DAFB80BE2957287E00C4FA54 /* LocationManager.swift in Sources */,
 				DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */,
+				DAFB80B5295727A800C4FA54 /* Date+Extension.swift in Sources */,
+				DAFB80B9295727FE00C4FA54 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +404,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DAFB80BF295728B200C4FA54 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		DAFB80C2295728C200C4FA54 /* XCRemoteSwiftPackageReference "EasyAutoLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ligr/EasyAutoLayout";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DAFB80C0295728B200C4FA54 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAFB80BF295728B200C4FA54 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		DAFB80C3295728C200C4FA54 /* EasyAutolayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAFB80C2295728C200C4FA54 /* XCRemoteSwiftPackageReference "EasyAutoLayout" */;
+			productName = EasyAutolayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DAFB809229571FDF00C4FA54 /* Project object */;
 }
