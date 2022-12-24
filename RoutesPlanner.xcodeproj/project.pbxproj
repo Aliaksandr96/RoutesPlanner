@@ -18,6 +18,21 @@
 		DAFB80BE2957287E00C4FA54 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80BD2957287D00C4FA54 /* LocationManager.swift */; };
 		DAFB80C1295728B200C4FA54 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DAFB80C0295728B200C4FA54 /* RealmSwift */; };
 		DAFB80C4295728C200C4FA54 /* EasyAutolayout in Frameworks */ = {isa = PBXBuildFile; productRef = DAFB80C3295728C200C4FA54 /* EasyAutolayout */; };
+		DAFB80C729572A4C00C4FA54 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80C629572A4B00C4FA54 /* LocationModel.swift */; };
+		DAFB80C929572A5400C4FA54 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80C829572A5400C4FA54 /* RouteModel.swift */; };
+		DAFB80CE29572AC700C4FA54 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80CD29572AC700C4FA54 /* LocationsTableViewCell.swift */; };
+		DAFB80D029572B0300C4FA54 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80CF29572B0300C4FA54 /* MainPresenter.swift */; };
+		DAFB80D229572B2400C4FA54 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80D129572B2400C4FA54 /* MainRouter.swift */; };
+		DAFB80D429572B4300C4FA54 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80D329572B4300C4FA54 /* MainViewController.swift */; };
+		DAFB80DD29572C4700C4FA54 /* NewRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80DC29572C4700C4FA54 /* NewRouteTableViewCell.swift */; };
+		DAFB80DF29572C8600C4FA54 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80DE29572C8600C4FA54 /* SearchResultTableViewController.swift */; };
+		DAFB80E129572CA900C4FA54 /* NewRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80E029572CA900C4FA54 /* NewRouteViewController.swift */; };
+		DAFB80E329572CC500C4FA54 /* NewRoutePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80E229572CC500C4FA54 /* NewRoutePresenter.swift */; };
+		DAFB80E529572CDE00C4FA54 /* NewRouteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */; };
+		DAFB80E929572D1700C4FA54 /* RoutesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80E829572D1700C4FA54 /* RoutesTableCell.swift */; };
+		DAFB80EB29572D3A00C4FA54 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80EA29572D3A00C4FA54 /* RoutesViewController.swift */; };
+		DAFB80ED29572D5400C4FA54 /* RoutesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80EC29572D5400C4FA54 /* RoutesPresenter.swift */; };
+		DAFB80EF29572D7B00C4FA54 /* RoutesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB80EE29572D7B00C4FA54 /* RoutesRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +47,21 @@
 		DAFB80B8295727FE00C4FA54 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DAFB80BB2957287700C4FA54 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		DAFB80BD2957287D00C4FA54 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		DAFB80C629572A4B00C4FA54 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		DAFB80C829572A5400C4FA54 /* RouteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		DAFB80CD29572AC700C4FA54 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewCell.swift; sourceTree = "<group>"; };
+		DAFB80CF29572B0300C4FA54 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		DAFB80D129572B2400C4FA54 /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		DAFB80D329572B4300C4FA54 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DAFB80DC29572C4700C4FA54 /* NewRouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRouteTableViewCell.swift; sourceTree = "<group>"; };
+		DAFB80DE29572C8600C4FA54 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
+		DAFB80E029572CA900C4FA54 /* NewRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRouteViewController.swift; sourceTree = "<group>"; };
+		DAFB80E229572CC500C4FA54 /* NewRoutePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRoutePresenter.swift; sourceTree = "<group>"; };
+		DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRouteRouter.swift; sourceTree = "<group>"; };
+		DAFB80E829572D1700C4FA54 /* RoutesTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesTableCell.swift; sourceTree = "<group>"; };
+		DAFB80EA29572D3A00C4FA54 /* RoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
+		DAFB80EC29572D5400C4FA54 /* RoutesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesPresenter.swift; sourceTree = "<group>"; };
+		DAFB80EE29572D7B00C4FA54 /* RoutesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +96,8 @@
 		DAFB809C29571FDF00C4FA54 /* RoutesPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				DAFB80CA29572A9F00C4FA54 /* Modules */,
+				DAFB80C529572A3E00C4FA54 /* Models */,
 				DAFB80BA2957283100C4FA54 /* Managers */,
 				DAFB80B32957279A00C4FA54 /* Extensions */,
 				DAFB80B22957248300C4FA54 /* Application */,
@@ -110,6 +142,83 @@
 				DAFB80BD2957287D00C4FA54 /* LocationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		DAFB80C529572A3E00C4FA54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80C829572A5400C4FA54 /* RouteModel.swift */,
+				DAFB80C629572A4B00C4FA54 /* LocationModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DAFB80CA29572A9F00C4FA54 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80E629572D0300C4FA54 /* Routes */,
+				DAFB80D529572B7100C4FA54 /* NewRoute */,
+				DAFB80CB29572AAE00C4FA54 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DAFB80CB29572AAE00C4FA54 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80D329572B4300C4FA54 /* MainViewController.swift */,
+				DAFB80D129572B2400C4FA54 /* MainRouter.swift */,
+				DAFB80CF29572B0300C4FA54 /* MainPresenter.swift */,
+				DAFB80CC29572AB800C4FA54 /* LocationsTableCell */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DAFB80CC29572AB800C4FA54 /* LocationsTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80CD29572AC700C4FA54 /* LocationsTableViewCell.swift */,
+			);
+			path = LocationsTableCell;
+			sourceTree = "<group>";
+		};
+		DAFB80D529572B7100C4FA54 /* NewRoute */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */,
+				DAFB80E229572CC500C4FA54 /* NewRoutePresenter.swift */,
+				DAFB80E029572CA900C4FA54 /* NewRouteViewController.swift */,
+				DAFB80DE29572C8600C4FA54 /* SearchResultTableViewController.swift */,
+				DAFB80DB29572C3700C4FA54 /* NewRouteTableViewCell */,
+			);
+			path = NewRoute;
+			sourceTree = "<group>";
+		};
+		DAFB80DB29572C3700C4FA54 /* NewRouteTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80DC29572C4700C4FA54 /* NewRouteTableViewCell.swift */,
+			);
+			path = NewRouteTableViewCell;
+			sourceTree = "<group>";
+		};
+		DAFB80E629572D0300C4FA54 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80EE29572D7B00C4FA54 /* RoutesRouter.swift */,
+				DAFB80EC29572D5400C4FA54 /* RoutesPresenter.swift */,
+				DAFB80EA29572D3A00C4FA54 /* RoutesViewController.swift */,
+				DAFB80E729572D0D00C4FA54 /* RoutesTableCell */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		DAFB80E729572D0D00C4FA54 /* RoutesTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB80E829572D1700C4FA54 /* RoutesTableCell.swift */,
+			);
+			path = RoutesTableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,13 +299,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAFB80C729572A4C00C4FA54 /* LocationModel.swift in Sources */,
+				DAFB80D429572B4300C4FA54 /* MainViewController.swift in Sources */,
 				DAFB80B7295727D900C4FA54 /* Identifire+Extension.swift in Sources */,
 				DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */,
+				DAFB80C929572A5400C4FA54 /* RouteModel.swift in Sources */,
 				DAFB80BC2957287700C4FA54 /* DatabaseManager.swift in Sources */,
+				DAFB80D229572B2400C4FA54 /* MainRouter.swift in Sources */,
 				DAFB80BE2957287E00C4FA54 /* LocationManager.swift in Sources */,
+				DAFB80E929572D1700C4FA54 /* RoutesTableCell.swift in Sources */,
+				DAFB80ED29572D5400C4FA54 /* RoutesPresenter.swift in Sources */,
+				DAFB80DD29572C4700C4FA54 /* NewRouteTableViewCell.swift in Sources */,
+				DAFB80CE29572AC700C4FA54 /* LocationsTableViewCell.swift in Sources */,
 				DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */,
+				DAFB80E529572CDE00C4FA54 /* NewRouteRouter.swift in Sources */,
+				DAFB80EF29572D7B00C4FA54 /* RoutesRouter.swift in Sources */,
+				DAFB80D029572B0300C4FA54 /* MainPresenter.swift in Sources */,
+				DAFB80EB29572D3A00C4FA54 /* RoutesViewController.swift in Sources */,
 				DAFB80B5295727A800C4FA54 /* Date+Extension.swift in Sources */,
 				DAFB80B9295727FE00C4FA54 /* UIColor+Extension.swift in Sources */,
+				DAFB80DF29572C8600C4FA54 /* SearchResultTableViewController.swift in Sources */,
+				DAFB80E129572CA900C4FA54 /* NewRouteViewController.swift in Sources */,
+				DAFB80E329572CC500C4FA54 /* NewRoutePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
