@@ -190,6 +190,8 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - MK Map View Delegate
+
 extension MainViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
