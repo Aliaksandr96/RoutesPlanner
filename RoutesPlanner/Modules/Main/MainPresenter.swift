@@ -43,7 +43,7 @@ extension MainPresenter: MainPresenterProtocol {
         router.openNewRouteModule { [weak self] transferLocations in
             self?.locationsArray.removeAll()
             self?.view.removeAllAnatations()
-            self?.locationsArray.append(contentsOf: transferLocations)
+            self?.locationsArray.append(contentsOf: transferLocations.sorted { $0.postCode < $1.postCode })
             self?.addAllAnnotations()
             self?.view.updateLocationsTable()
         }
@@ -55,7 +55,7 @@ extension MainPresenter: MainPresenterProtocol {
             self?.view.updateLocationsTable()
             self?.locationsArray.removeAll()
             self?.view.removeAllAnatations()
-            self?.locationsArray.append(contentsOf: transferRoute.location)
+            self?.locationsArray.append(contentsOf: transferRoute.location.sorted { $0.postCode < $1.postCode })
             self?.addAllAnnotations()
             self?.view.updateLocationsTable()
         }
@@ -64,7 +64,7 @@ extension MainPresenter: MainPresenterProtocol {
     func viewDidLoaded() {
         let resultRealmObject = DatabaseManager.shared.getRoute()
         guard let lastLocation = resultRealmObject.last?.location else { return }
-        locationsArray.append(contentsOf: lastLocation)
+        locationsArray.append(contentsOf: lastLocation.sorted { $0.postCode < $1.postCode })
         addAllAnnotations()
         view.updateLocationsTable()
     }
