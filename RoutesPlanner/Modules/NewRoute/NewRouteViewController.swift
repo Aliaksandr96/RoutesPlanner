@@ -103,6 +103,8 @@ extension NewRouteViewController: NewRouteViewProtocol {
     }
 }
 
+// MARK: - Table View Protocols
+
 extension NewRouteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.locationsArray.count
@@ -127,6 +129,8 @@ extension NewRouteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .backgroundColor()
     }
 }
+
+// MARK: - UI Search Results Updating
 
 extension NewRouteViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
