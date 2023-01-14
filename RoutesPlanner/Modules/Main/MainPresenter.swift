@@ -27,7 +27,7 @@ final class MainPresenter {
 
     // MARK: - Variables
 
-    var locationsArray: [Location] = []
+    var locationsArray: [Location] = [].sorted { $0.postCode < $1.postCode }
 
     init(view: MainViewProtocol, router: MainRouterProtocol) {
         self.view = view
@@ -43,7 +43,7 @@ extension MainPresenter: MainPresenterProtocol {
         router.openNewRouteModule { [weak self] transferLocations in
             self?.locationsArray.removeAll()
             self?.view.removeAllAnatations()
-            self?.locationsArray.append(contentsOf: transferLocations.sorted { $0.postCode < $1.postCode })
+            self?.locationsArray.append(contentsOf: transferLocations)
             self?.addAllAnnotations()
             self?.view.updateLocationsTable()
         }
@@ -54,7 +54,7 @@ extension MainPresenter: MainPresenterProtocol {
             self?.locationsArray.removeAll()
             self?.view.updateLocationsTable()
             self?.view.removeAllAnatations()
-            self?.locationsArray.append(contentsOf: transferRoute.location.sorted { $0.postCode < $1.postCode })
+            self?.locationsArray.append(contentsOf: transferRoute.location)
             self?.addAllAnnotations()
             self?.view.updateLocationsTable()
         }
@@ -63,7 +63,7 @@ extension MainPresenter: MainPresenterProtocol {
     func viewDidLoaded() {
         let resultRealmObject = DatabaseManager.shared.getRoute()
         guard let lastLocation = resultRealmObject.last?.location else { return }
-        locationsArray.append(contentsOf: lastLocation.sorted { $0.postCode < $1.postCode })
+        locationsArray.append(contentsOf: lastLocation)
         addAllAnnotations()
         view.updateLocationsTable()
     }
