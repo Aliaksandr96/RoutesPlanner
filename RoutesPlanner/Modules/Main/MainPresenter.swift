@@ -53,7 +53,6 @@ extension MainPresenter: MainPresenterProtocol {
         router.openRoutesView { [weak self] transferRoute in
             self?.locationsArray.removeAll()
             self?.view.updateLocationsTable()
-            self?.locationsArray.removeAll()
             self?.view.removeAllAnatations()
             self?.locationsArray.append(contentsOf: transferRoute.location.sorted { $0.postCode < $1.postCode })
             self?.addAllAnnotations()
