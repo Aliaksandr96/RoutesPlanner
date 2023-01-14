@@ -51,7 +51,7 @@ final class NewRouteTableViewCell: UITableViewCell {
         contentView.backgroundColor = .backgroundColor()
         cellView.layer.cornerRadius = 10
         cellView.layer.borderColor = UIColor.systemBlue.cgColor
-        cellView.layer.borderWidth = 1
+        cellView.layer.borderWidth = 1.1
 
         [buildingNumberLabel, streetLabel].forEach { $0.textColor = .blackGold() }
         [postCodeLabel, cityLabel].forEach { $0.textColor = .grayWhite() }
