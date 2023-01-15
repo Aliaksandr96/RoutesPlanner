@@ -5,6 +5,7 @@ protocol MainPresenterProtocol {
     func openNewRouteView()
     func openRoutesView()
     func viewDidLoaded()
+    func checkEmptyArray()
     func addAllAnnotations()
     func localizeCity()
     func localizePlace(location: Location)
@@ -27,7 +28,7 @@ final class MainPresenter {
 
     // MARK: - Variables
 
-    var locationsArray: [Location] = []
+    var locationsArray: [Location] = [] 
 
     init(view: MainViewProtocol, router: MainRouterProtocol) {
         self.view = view
@@ -66,6 +67,14 @@ extension MainPresenter: MainPresenterProtocol {
         locationsArray.append(contentsOf: lastLocation.sorted { $0.postCode < $1.postCode })
         addAllAnnotations()
         view.updateLocationsTable()
+    }
+    
+    func checkEmptyArray() {
+        if locationsArray.isEmpty == true {
+            view.emptyRouteNewButtonState(state: false)
+        } else {
+            view.emptyRouteNewButtonState(state: true)
+        }
     }
 
     func addAllAnnotations() {
