@@ -25,6 +25,7 @@ final class MainViewController: UIViewController {
     private let backgroundTableView = UIView()
     private let locationsTableView = UITableView()
     private let localizeCityButton = UIButton()
+    private let emptyRoutesNewButton = UIButton()
 
     // MARK: - Lifecycle
 
@@ -44,7 +45,7 @@ final class MainViewController: UIViewController {
     // MARK: - Setup Subviews
 
     private func setupSubviews() {
-        [mapView, backgroundTableView, locationsTableView, localizeCityButton].forEach { view.addSubview($0) }
+        [mapView, backgroundTableView, locationsTableView, localizeCityButton,emptyRoutesNewButton].forEach { view.addSubview($0) }
     }
 
     // MARK: - Setup Constraints
@@ -58,6 +59,8 @@ final class MainViewController: UIViewController {
             .top(to: backgroundTableView, offset: 15).width(to: backgroundTableView).bottom(to: view)
         localizeCityButton.pin
             .above(of: backgroundTableView, offset: 10).leading(to: mapView, offset: 10).width(to: 30).height(to: 30)
+        emptyRoutesNewButton.pin
+            .center(in: backgroundTableView).width(to: 200).height(to: 50)
     }
 
     // MARK: - Configure UI
@@ -72,6 +75,11 @@ final class MainViewController: UIViewController {
         
         let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
         localizeCityButton.setImage(UIImage(systemName: "location.circle.fill", withConfiguration: configuration), for: .normal)
+        
+        emptyRoutesNewButton.setTitle("New Route", for: .normal)
+        emptyRoutesNewButton.backgroundColor = .pinBlue()
+        emptyRoutesNewButton.setTitleColor(.white, for: .normal)
+        emptyRoutesNewButton.layer.cornerRadius = 15
     }
 
     // MARK: - Setup Behavior
