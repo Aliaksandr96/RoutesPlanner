@@ -7,6 +7,7 @@ protocol MainViewProtocol: AnyObject {
     func addAnnotationOnMap(annotation: MKAnnotation)
     func setRegion(region: MKCoordinateRegion)
     func removeAllAnatations()
+    func emptyRouteNewButtonState(state: Bool)
 }
 
 enum OpacityValue: Float {
@@ -40,6 +41,7 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.localizeCity()
+        presenter.checkEmptyArray()
     }
 
     // MARK: - Setup Subviews
@@ -95,9 +97,15 @@ final class MainViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Route", style: .plain, target: self, action: #selector(newButtonDidTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Routes", style: .plain, target: self, action: #selector(routesButtonDidTapped))
+        
+        emptyRoutesNewButton.addTarget(self, action: #selector(emptyRoutesNewButtonDidTapped), for: .touchUpInside)
     }
 
     // MARK: - Helpers
+    
+    @objc private func emptyRoutesNewButtonDidTapped() {
+        presenter.openNewRouteView()
+    }
 
     @objc private func newButtonDidTapped() {
         presenter.openNewRouteView()
@@ -115,6 +123,10 @@ final class MainViewController: UIViewController {
 // MARK: - MainProtocol
 
 extension MainViewController: MainViewProtocol {
+    func emptyRouteNewButtonState(state: Bool) {
+        emptyRoutesNewButton.isHidden = state
+    }
+    
     func updateLocationsTable() {
         locationsTableView.reloadData()
     }
