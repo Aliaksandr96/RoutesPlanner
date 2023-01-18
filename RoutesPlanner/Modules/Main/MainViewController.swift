@@ -10,11 +10,6 @@ protocol MainViewProtocol: AnyObject {
     func emptyRouteNewButtonState(state: Bool)
 }
 
-enum OpacityValue: Float {
-    case clear = 0.25
-    case normal = 1
-}
-
 final class MainViewController: UIViewController {
     // MARK: - Public
 
@@ -23,11 +18,17 @@ final class MainViewController: UIViewController {
     // MARK: - Private
 
     private let mapView = MKMapView()
+    
     private let backgroundTableView = UIView()
     private let locationsTableView = UITableView()
     private let localizeCityButton = UIButton()
     private let emptyRoutesNewButton = UIButton()
 
+  private enum OpacityValue {
+      static let clear: Float = 0.25
+      static let normal: Float = 1
+    }
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -47,7 +48,8 @@ final class MainViewController: UIViewController {
     // MARK: - Setup Subviews
 
     private func setupSubviews() {
-        [mapView, backgroundTableView, locationsTableView, localizeCityButton,emptyRoutesNewButton].forEach { view.addSubview($0) }
+        [mapView, backgroundTableView, localizeCityButton,emptyRoutesNewButton].forEach { view.addSubview($0) }
+        backgroundTableView.addSubview(locationsTableView)
     }
 
     // MARK: - Setup Constraints
@@ -56,9 +58,9 @@ final class MainViewController: UIViewController {
         mapView.pin
             .top(to: view.safeAreaLayoutGuide).width(to: view).height(to: view, multiplier: 1 / 1.8)
         backgroundTableView.pin
-            .below(of: mapView, offset: -40).width(to: view).bottom(to: view)
+            .below(of: mapView, offset: -40).bottom(to: view, offset: -1).leading(to: view, offset: 1).trailing(to: view, offset: 1)
         locationsTableView.pin
-            .top(to: backgroundTableView, offset: 15).width(to: backgroundTableView).bottom(to: view)
+            .top(to: backgroundTableView, offset: 15).bottom(to: view, offset: 2).leading(to: view, offset: 2).trailing(to: view, offset: 2)
         localizeCityButton.pin
             .above(of: backgroundTableView, offset: 10).leading(to: mapView, offset: 10).width(to: 30).height(to: 30)
         emptyRoutesNewButton.pin
@@ -69,10 +71,13 @@ final class MainViewController: UIViewController {
 
     private func configureUI() {
         view.backgroundColor = .backgroundColor()
-        backgroundTableView.layer.cornerRadius = 20 
+        backgroundTableView.layer.cornerRadius = 20
+        backgroundTableView.layer.borderColor = UIColor.systemBlue.cgColor
+        backgroundTableView.layer.borderWidth = 1
         [locationsTableView, backgroundTableView].forEach { $0.backgroundColor = .backgroundColor() }
         backgroundTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        locationsTableView.rowHeight = 100
+        locationsTableView.estimatedRowHeight = 120
+        locationsTableView.rowHeight = UITableView.automaticDimension
         locationsTableView.separatorStyle = .none
         
         let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
@@ -154,24 +159,26 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .identifireLocationsTableViewCell, for: indexPath) as? LocationsTableViewCell else { return UITableViewCell() }
         let location = presenter.locationsArray[indexPath.row]
+        let countRow = presenter.locationsArray.indices[indexPath.row] + 1
         cell.setupLabels(numberBuilding: location.building,
                          street: location.street,
                          postCode: location.postCode,
                          subArea: location.subAdminArea,
-                         city: location.city)
+                         city: location.city,
+                         countRow: countRow)
 
         if presenter.locationsArray[indexPath.row].isComplited == true || presenter.locationsArray[indexPath.row].isFailed == true {
             cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
-            cell.labelsOpacity(value: OpacityValue.clear.rawValue)
+            cell.labelsOpacity(value: OpacityValue.clear)
         } else {
             cell.changesHideButton(acceptButtonHide: false, failedButtonHide: false, navigateButtonHide: false, undoButtonHide: true)
-            cell.labelsOpacity(value: OpacityValue.normal.rawValue)
+            cell.labelsOpacity(value: OpacityValue.normal)
         }
 
         cell.acceptClosure = { [weak self] in
             guard let self = self else { return }
             cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
-            cell.labelsOpacity(value: OpacityValue.clear.rawValue)
+            cell.labelsOpacity(value: OpacityValue.clear)
             self.presenter.isCompletedPlace(state: true, location: location)
             self.presenter.setupAcceptAnnotation(mapView: self.mapView, location: location)
         }
@@ -179,7 +186,7 @@ extension MainViewController: UITableViewDataSource {
         cell.failedClosure = { [weak self] in
             guard let self = self else { return }
             cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
-            cell.labelsOpacity(value: OpacityValue.clear.rawValue)
+            cell.labelsOpacity(value: OpacityValue.clear)
             self.presenter.isFailedPlace(state: true, location: location)
             self.presenter.setupFailedAnnotation(mapView: self.mapView, location: location)
         }
@@ -191,7 +198,7 @@ extension MainViewController: UITableViewDataSource {
         cell.undoClosure = { [weak self] in
             guard let self = self else { return }
             cell.changesHideButton(acceptButtonHide: false, failedButtonHide: false, navigateButtonHide: false, undoButtonHide: true)
-            cell.labelsOpacity(value: OpacityValue.normal.rawValue)
+            cell.labelsOpacity(value: OpacityValue.normal)
             self.presenter.isCompletedPlace(state: false, location: location)
             self.presenter.isFailedPlace(state: false, location: location)
             self.presenter.setupAcceptAnnotation(mapView: self.mapView, location: location)
