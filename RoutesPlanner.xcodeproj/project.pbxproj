@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */; };
+		DA1871FE297851B00095697A /* DetailAddressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FB297851AF0095697A /* DetailAddressRouter.swift */; };
+		DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FC297851AF0095697A /* DetailAddressViewController.swift */; };
 		DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */; };
 		DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */; };
 		DAFB80A729571FE000C4FA54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A629571FE000C4FA54 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressPresenter.swift; sourceTree = "<group>"; };
+		DA1871FB297851AF0095697A /* DetailAddressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressRouter.swift; sourceTree = "<group>"; };
+		DA1871FC297851AF0095697A /* DetailAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressViewController.swift; sourceTree = "<group>"; };
 		DAFB809A29571FDF00C4FA54 /* RoutesPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutesPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA1871F9297851880095697A /* DetailAddress */ = {
+			isa = PBXGroup;
+			children = (
+				DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */,
+				DA1871FB297851AF0095697A /* DetailAddressRouter.swift */,
+				DA1871FC297851AF0095697A /* DetailAddressViewController.swift */,
+			);
+			path = DetailAddress;
+			sourceTree = "<group>";
+		};
 		DAFB809129571FDF00C4FA54 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +172,7 @@
 		DAFB80CA29572A9F00C4FA54 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DA1871F9297851880095697A /* DetailAddress */,
 				DAFB80E629572D0300C4FA54 /* Routes */,
 				DAFB80D529572B7100C4FA54 /* NewRoute */,
 				DAFB80CB29572AAE00C4FA54 /* Main */,
@@ -300,17 +317,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFB80C729572A4C00C4FA54 /* LocationModel.swift in Sources */,
+				DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */,
 				DAFB80D429572B4300C4FA54 /* MainViewController.swift in Sources */,
 				DAFB80B7295727D900C4FA54 /* Identifire+Extension.swift in Sources */,
 				DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */,
 				DAFB80C929572A5400C4FA54 /* RouteModel.swift in Sources */,
 				DAFB80BC2957287700C4FA54 /* DatabaseManager.swift in Sources */,
+				DA1871FE297851B00095697A /* DetailAddressRouter.swift in Sources */,
 				DAFB80D229572B2400C4FA54 /* MainRouter.swift in Sources */,
 				DAFB80BE2957287E00C4FA54 /* LocationManager.swift in Sources */,
 				DAFB80E929572D1700C4FA54 /* RoutesTableCell.swift in Sources */,
 				DAFB80ED29572D5400C4FA54 /* RoutesPresenter.swift in Sources */,
 				DAFB80DD29572C4700C4FA54 /* NewRouteTableViewCell.swift in Sources */,
 				DAFB80CE29572AC700C4FA54 /* LocationsTableViewCell.swift in Sources */,
+				DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */,
 				DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */,
 				DAFB80E529572CDE00C4FA54 /* NewRouteRouter.swift in Sources */,
 				DAFB80EF29572D7B00C4FA54 /* RoutesRouter.swift in Sources */,
