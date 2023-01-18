@@ -2,6 +2,7 @@ import UIKit
 
 protocol NewRouteRouterProtocol {
     func popToRoot()
+    func openDetailView(location: Location)
 }
 
 final class NewRouteRouter: NewRouteRouterProtocol {
@@ -22,5 +23,8 @@ final class NewRouteRouter: NewRouteRouterProtocol {
 
     func popToRoot() {
         navigationController.popToRootViewController(animated: true)
+    }
+    func openDetailView(location: Location) {
+        _ = DetailAddressRouter(navigationController: navigationController, location: location)
     }
 }

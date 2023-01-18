@@ -131,6 +131,10 @@ extension NewRouteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .backgroundColor()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.openDetailView(location: presenter.locationsArray[indexPath.row])
+    }
 }
 
 // MARK: - UI Search Results Updating

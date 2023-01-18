@@ -7,6 +7,7 @@ protocol NewRoutePresenterProtocol {
     func saveRouteToDatabase()
     func checkRouteAndSave()
     func popToRoot()
+    func openDetailView(location: Location)
     func transferCurrentLocationsArrayToMainTable(locations: [Location])
 }
 
@@ -55,6 +56,10 @@ extension NewRoutePresenter: NewRoutePresenterProtocol {
         DatabaseManager.shared.saveRoute(route: route)
     }
 
+    func openDetailView(location: Location) {
+        router.openDetailView(location: location)
+    }
+    
     func popToRoot() {
         router.popToRoot()
     }
