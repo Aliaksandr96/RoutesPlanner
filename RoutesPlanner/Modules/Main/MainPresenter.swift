@@ -42,7 +42,7 @@ final class MainPresenter {
 
 extension MainPresenter: MainPresenterProtocol {
     func openDetailView() {
-        router.openDetailAddressView()z
+        router.openDetailAddressView()
     }
     func openNewRouteView() {
         router.openNewRouteModule { [weak self] transferLocations in

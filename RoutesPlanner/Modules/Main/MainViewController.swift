@@ -212,8 +212,7 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let location = presenter.locationsArray[indexPath.row]
-        presenter.localizePlace(location: location)
+        presenter.openDetailView()
     }
 }
 
