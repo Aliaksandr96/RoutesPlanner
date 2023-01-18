@@ -3,7 +3,7 @@ import UIKit
 protocol MainRouterProtocol {
     func openNewRouteModule(completion: @escaping (([Location]) -> Void))
     func openRoutesView(completion: @escaping ((Route) -> Void))
-    func openDetailAddressView()
+    func openDetailAddressView(location: Location)
 }
 
 final class MainRouter: MainRouterProtocol {
@@ -24,7 +24,7 @@ final class MainRouter: MainRouterProtocol {
     func openRoutesView(completion: @escaping ((Route) -> Void)) {
         _ = RoutesRouter(navigationController: navigationController, completion: completion)
     }
-    func openDetailAddressView() {
-        _ = DetailAddressRouter(navigationController: navigationController)
+    func openDetailAddressView(location: Location) {
+        _ = DetailAddressRouter(navigationController: navigationController, location: location)
     }
 }

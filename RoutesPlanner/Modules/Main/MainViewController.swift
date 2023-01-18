@@ -76,7 +76,7 @@ final class MainViewController: UIViewController {
         backgroundTableView.layer.borderWidth = 1
         [locationsTableView, backgroundTableView].forEach { $0.backgroundColor = .backgroundColor() }
         backgroundTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        locationsTableView.estimatedRowHeight = 120
+        locationsTableView.estimatedRowHeight = 150
         locationsTableView.rowHeight = UITableView.automaticDimension
         locationsTableView.separatorStyle = .none
         
@@ -212,7 +212,7 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.openDetailView()
+        presenter.openDetailView(location: presenter.locationsArray[indexPath.row])
     }
 }
 
