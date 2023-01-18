@@ -4,12 +4,43 @@ import UIKit
 final class LocationsTableViewCell: UITableViewCell {
     // MARK: - Private
     
-    private let cellView = UIView()
-    private let numberBuildingLabel = UILabel()
-    private let streetLabel = UILabel()
-    private let postCodeLabel = UILabel()
-    private let subAreaLabel = UILabel()
-    private let cityLabel = UILabel()
+    private let cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .backgroundColor()
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.layer.borderWidth = 1
+        return view
+    }()
+
+    private let adressLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .blackGold()
+        label.font = UIFont.systemFont(ofSize: 18)
+        return label
+    }()
+
+    private let subAdressLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .grayWhite()
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
+    
+    private let discriptionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 10
+        label.backgroundColor = .systemGray5
+        return label
+    }()
+    
+    private let countRowLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.textColor = .blueGold()
+        return label
+    }()
     
     // MARK: - Public
     
@@ -25,6 +56,7 @@ final class LocationsTableViewCell: UITableViewCell {
     var failedClosure: (() -> Void)?
     var undoClosure: (() -> Void)?
     
+    // MARK: - Initialize
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: .identifireLocationsTableViewCell)
 
@@ -42,26 +74,24 @@ final class LocationsTableViewCell: UITableViewCell {
     // MARK: - Setup Subviews
 
     func setupSubviews() {
-        [cellView, numberBuildingLabel, streetLabel, postCodeLabel, subAreaLabel, cityLabel, acceptButton, navigateButton, failedButton, undoButton].forEach { contentView.addSubview($0) }
+        [cellView, countRowLabel, adressLabel, discriptionLabel, subAdressLabel, acceptButton, navigateButton, failedButton, undoButton].forEach { contentView.addSubview($0) }
     }
 
     // MARK: - Setup Constraints
 
     func setupConstraints() {
         cellView.pin
-            .top(to: contentView).leading(to: contentView, offset: 10).trailing(to: contentView, offset: 10).height(to: 90)
-        numberBuildingLabel.pin
-            .top(to: cellView, offset: 4).leading(to: cellView, offset: 4).width(to: cellView, multiplier: 1/4.5).height(to: cellView, multiplier: 1/3)
-        streetLabel.pin
-            .after(of: numberBuildingLabel, offset: 3).height(to: cellView, multiplier: 1/3).trailing(to: cellView, offset: 4).top(to: cellView, offset: 4)
-        postCodeLabel.pin
-            .below(of: numberBuildingLabel, offset: 3).leading(to: numberBuildingLabel).width(to: cellView, multiplier: 1/5).bottom(to: cellView, offset: 4)
-        subAreaLabel.pin
-            .after(of: postCodeLabel, offset: 3).width(to: cellView, multiplier: 1/5).below(of: numberBuildingLabel, offset: 3).bottom(to: cellView, offset: 4)
-        cityLabel.pin
-            .after(of: subAreaLabel, offset: 3).width(to: cellView, multiplier: 1/5).below(of: numberBuildingLabel, offset: 3).bottom(to: cellView, offset: 4)
+            .top(to: contentView, offset: 5).leading(to: contentView, offset: 10).trailing(to: contentView, offset: 10).bottom(to: contentView)
+        adressLabel.pin
+            .top(to: cellView, offset: 4).leading(to: cellView, offset: 10).trailing(to: cellView, offset: 26).height(to: 20)
+        countRowLabel.pin
+            .top(to: cellView, offset: 4).trailing(to: cellView, offset: 5).height(to: 20).width(to: 20)
+        subAdressLabel.pin
+            .below(of: adressLabel, offset: 1).leading(to: adressLabel).trailing(to: cellView, offset: 4).height(to: 20)
+        discriptionLabel.pin
+            .below(of: subAdressLabel, offset: 4).leading(to: adressLabel).bottom(to: cellView, offset: 5).before(of: acceptButton, offset: 4).height(to: 35)
         navigateButton.pin
-            .bottom(to: cellView, offset: 12).trailing(to: cellView, offset: 8).width(to: 35).height(to: 35)
+            .bottom(to: cellView, offset: 4).trailing(to: cellView, offset: 8).width(to: 35).height(to: 35)
         failedButton.pin
             .before(of: navigateButton, offset: 8).bottom(to: navigateButton).width(to: 35).height(to: 35)
         acceptButton.pin
@@ -73,27 +103,11 @@ final class LocationsTableViewCell: UITableViewCell {
     // MARK: - ConfigureUI
 
     func configureUI() {
-        cellView.backgroundColor = .backgroundColor()
         contentView.backgroundColor = .backgroundColor()
-        cellView.layer.cornerRadius = 10
-        cellView.layer.borderColor = UIColor.systemBlue.cgColor
-        cellView.layer.borderWidth = 1
-        
-        [postCodeLabel, cityLabel, subAreaLabel].forEach { $0.textColor = .grayWhite() }
-        [numberBuildingLabel, streetLabel, postCodeLabel, subAreaLabel, cityLabel].forEach { $0.numberOfLines = 3 }
-        [numberBuildingLabel, postCodeLabel, subAreaLabel, cityLabel].forEach { $0.textAlignment = .center }
-        [postCodeLabel, subAreaLabel, cityLabel].forEach { $0.font = UIFont.systemFont(ofSize: 13) }
-        streetLabel.textColor = .blackGold()
-        streetLabel.font = UIFont.systemFont(ofSize: 18)
-        
-        numberBuildingLabel.textColor = .blueGold()
-        numberBuildingLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        
         acceptButton.setImage(UIImage(named: "accept"), for: .normal)
         failedButton.setImage(UIImage(named: "failed"), for: .normal)
         navigateButton.setImage(UIImage(named: "navigate"), for: .normal)
         undoButton.setImage(UIImage(named: "undo"), for: .normal)
-        
         undoButton.isHidden = true
     }
     
@@ -126,12 +140,10 @@ final class LocationsTableViewCell: UITableViewCell {
     
     // MARK: - API
     
-    func setupLabels(numberBuilding: String, street: String, postCode: String, subArea: String, city: String) {
-        numberBuildingLabel.text = numberBuilding
-        streetLabel.text = street
-        postCodeLabel.text = postCode
-        subAreaLabel.text = subArea
-        cityLabel.text = city
+    func setupLabels(numberBuilding: String, street: String, postCode: String, subArea: String, city: String, countRow: Int) {
+        adressLabel.text = "\(street), \(numberBuilding)"
+        subAdressLabel.text = "\(postCode), \(subArea), \(city)"
+        countRowLabel.text = "\(countRow)"
     }
     
     func changesHideButton(acceptButtonHide: Bool, failedButtonHide: Bool, navigateButtonHide: Bool, undoButtonHide: Bool) {
@@ -142,6 +154,6 @@ final class LocationsTableViewCell: UITableViewCell {
     }
     
     func labelsOpacity(value: Float) {
-        [streetLabel, numberBuildingLabel, postCodeLabel, cityLabel, subAreaLabel].forEach { $0.layer.opacity = value }
+        [adressLabel, subAdressLabel, countRowLabel].forEach { $0.layer.opacity = value }
     }
 }
