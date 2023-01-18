@@ -4,6 +4,7 @@ import MapKit
 protocol MainPresenterProtocol {
     func openNewRouteView()
     func openRoutesView()
+    func openDetailView()
     func viewDidLoaded()
     func checkEmptyArray()
     func addAllAnnotations()
@@ -40,6 +41,9 @@ final class MainPresenter {
 // MARK: - Extension Main Presenter
 
 extension MainPresenter: MainPresenterProtocol {
+    func openDetailView() {
+        router.openDetailAddressView()z
+    }
     func openNewRouteView() {
         router.openNewRouteModule { [weak self] transferLocations in
             self?.locationsArray.removeAll()
