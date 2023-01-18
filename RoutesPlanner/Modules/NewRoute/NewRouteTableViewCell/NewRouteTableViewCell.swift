@@ -3,13 +3,37 @@ import UIKit
 
 final class NewRouteTableViewCell: UITableViewCell {
     // MARK: - Private
+    
+    private let cellView : UIView = {
+       let view = UIView()
+        view.backgroundColor = .backgroundColor()
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.layer.borderWidth = 1
+        return view
+    }()
+    private let addresLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = .blackGold()
+         return label
+     }()
+    private let subAddressLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .grayWhite()
+        label.font = UIFont.systemFont(ofSize: 14)
+         return label
+     }()
+    private let countRowLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .blueGold()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+         return label
+     }()
 
-    private let cellView = UIView()
-    private let buildingNumberLabel = UILabel()
-    private let streetLabel = UILabel()
-    private let postCodeLabel = UILabel()
-    private let cityLabel = UILabel()
-
+    // MARK: - Initialize
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: .identifireLocationsTableViewCell)
 
@@ -26,46 +50,37 @@ final class NewRouteTableViewCell: UITableViewCell {
     // MARK: - Setup Subviews
 
     func setupSubviews() {
-        [cellView, buildingNumberLabel, streetLabel, postCodeLabel, cityLabel].forEach { contentView.addSubview($0) }
+        [cellView, addresLabel, subAddressLabel,countRowLabel].forEach { contentView.addSubview($0) }
     }
 
     // MARK: - Setup Constraints
 
     func setupConstraints() {
         cellView.pin
-            .top(to: contentView, offset: 5).leading(to: contentView, offset: 10).trailing(to: contentView, offset: 10).height(to: 90)
-        buildingNumberLabel.pin
-            .centerY(in: cellView).width(to: cellView, multiplier: 1/4).height(to: cellView).leading(to: cellView, offset: 5)
-        streetLabel.pin
-            .centerY(in: cellView).width(to: cellView, multiplier: 2/4).height(to: cellView).centerX(in: cellView)
-        postCodeLabel.pin
-            .trailing(to: cellView, offset: 5).height(to: cellView, multiplier: 1/2).width(to: cellView, multiplier: 1/4).top(to: cellView)
-        cityLabel.pin
-            .trailing(to: cellView, offset: 5).height(to: cellView, multiplier: 1/2).width(to: cellView, multiplier: 1/4).bottom(to: cellView)
+            .top(to: contentView, offset: 5).leading(to: contentView, offset: 10).trailing(to: contentView, offset: 10).height(to: 52)
+        addresLabel.pin
+            .top(to: cellView, offset: 3).leading(to: cellView, offset: 15).trailing(to: cellView, offset: 31).height(to: 25)
+        countRowLabel.pin
+            .after(of: addresLabel, offset: 1).width(to: 25).height(to: 25).top(to: cellView, offset: 3)
+        subAddressLabel.pin
+            .below(of: addresLabel, offset: 1).leading(to: cellView, offset: 15).trailing(to: cellView, offset: 5).height(to: 15)
     }
 
     // MARK: - ConfigureUI
 
     func configureUI() {
-        cellView.backgroundColor = .backgroundColor()
         contentView.backgroundColor = .backgroundColor()
-        cellView.layer.cornerRadius = 10
-        cellView.layer.borderColor = UIColor.systemBlue.cgColor
-        cellView.layer.borderWidth = 1
-
-        [buildingNumberLabel, streetLabel].forEach { $0.textColor = .blackGold() }
-        [postCodeLabel, cityLabel].forEach { $0.textColor = .grayWhite() }
-        [buildingNumberLabel, streetLabel, postCodeLabel, cityLabel].forEach { $0.numberOfLines = 3 }
-        [buildingNumberLabel, streetLabel, postCodeLabel, cityLabel].forEach { $0.textAlignment = .center }
-        buildingNumberLabel.font = UIFont.systemFont(ofSize: 26)
     }
 
     // MARK: - API
 
-    func setupLabels(street: String, buildingNumber: String, postCode: String, city: String) {
-        streetLabel.text = street
-        buildingNumberLabel.text = buildingNumber
-        postCodeLabel.text = postCode
-        cityLabel.text = city
+    func setupLabels(street: String, buildingNumber: String, postCode: String, city: String, subArea: String, countRow: Int) {
+        subAddressLabel.text = "\(postCode), \(subArea), \(city)"
+        addresLabel.text = "\(street), \(buildingNumber)"
+        countRowLabel.text = "\(countRow)"
     }
+}
+
+extension NewRouteTableViewCell {
+    
 }
