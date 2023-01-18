@@ -10,6 +10,9 @@
 		DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */; };
 		DA1871FE297851B00095697A /* DetailAddressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FB297851AF0095697A /* DetailAddressRouter.swift */; };
 		DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FC297851AF0095697A /* DetailAddressViewController.swift */; };
+		DA187202297856A50095697A /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA187201297856A50095697A /* DescriptionView.swift */; };
+		DA1872042978691D0095697A /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1872032978691D0095697A /* ClientInfo.swift */; };
+		DA187207297880520095697A /* DetailsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA187206297880520095697A /* DetailsTextField.swift */; };
 		DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */; };
 		DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */; };
 		DAFB80A729571FE000C4FA54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A629571FE000C4FA54 /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 		DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressPresenter.swift; sourceTree = "<group>"; };
 		DA1871FB297851AF0095697A /* DetailAddressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressRouter.swift; sourceTree = "<group>"; };
 		DA1871FC297851AF0095697A /* DetailAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressViewController.swift; sourceTree = "<group>"; };
+		DA187201297856A50095697A /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		DA1872032978691D0095697A /* ClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
+		DA187206297880520095697A /* DetailsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTextField.swift; sourceTree = "<group>"; };
 		DAFB809A29571FDF00C4FA54 /* RoutesPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutesPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,11 +92,28 @@
 		DA1871F9297851880095697A /* DetailAddress */ = {
 			isa = PBXGroup;
 			children = (
+				DA187205297880290095697A /* Views */,
 				DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */,
 				DA1871FB297851AF0095697A /* DetailAddressRouter.swift */,
 				DA1871FC297851AF0095697A /* DetailAddressViewController.swift */,
 			);
 			path = DetailAddress;
+			sourceTree = "<group>";
+		};
+		DA1872002978568C0095697A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA187201297856A50095697A /* DescriptionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DA187205297880290095697A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA187206297880520095697A /* DetailsTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DAFB809129571FDF00C4FA54 = {
@@ -165,6 +188,7 @@
 			children = (
 				DAFB80C829572A5400C4FA54 /* RouteModel.swift */,
 				DAFB80C629572A4B00C4FA54 /* LocationModel.swift */,
+				DA1872032978691D0095697A /* ClientInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				DAFB80CD29572AC700C4FA54 /* LocationsTableViewCell.swift */,
+				DA1872002978568C0095697A /* Views */,
 			);
 			path = LocationsTableCell;
 			sourceTree = "<group>";
@@ -320,6 +345,7 @@
 				DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */,
 				DAFB80D429572B4300C4FA54 /* MainViewController.swift in Sources */,
 				DAFB80B7295727D900C4FA54 /* Identifire+Extension.swift in Sources */,
+				DA187207297880520095697A /* DetailsTextField.swift in Sources */,
 				DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */,
 				DAFB80C929572A5400C4FA54 /* RouteModel.swift in Sources */,
 				DAFB80BC2957287700C4FA54 /* DatabaseManager.swift in Sources */,
@@ -329,8 +355,10 @@
 				DAFB80E929572D1700C4FA54 /* RoutesTableCell.swift in Sources */,
 				DAFB80ED29572D5400C4FA54 /* RoutesPresenter.swift in Sources */,
 				DAFB80DD29572C4700C4FA54 /* NewRouteTableViewCell.swift in Sources */,
+				DA1872042978691D0095697A /* ClientInfo.swift in Sources */,
 				DAFB80CE29572AC700C4FA54 /* LocationsTableViewCell.swift in Sources */,
 				DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */,
+				DA187202297856A50095697A /* DescriptionView.swift in Sources */,
 				DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */,
 				DAFB80E529572CDE00C4FA54 /* NewRouteRouter.swift in Sources */,
 				DAFB80EF29572D7B00C4FA54 /* RoutesRouter.swift in Sources */,
@@ -482,8 +510,10 @@
 				DEVELOPMENT_TEAM = 4XKQ66453D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoutesPlanner/Resources/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -509,8 +539,10 @@
 				DEVELOPMENT_TEAM = 4XKQ66453D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoutesPlanner/Resources/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
