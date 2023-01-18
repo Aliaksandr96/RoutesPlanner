@@ -47,7 +47,7 @@ final class NewRouteViewController: UIViewController {
         navigationItem.searchController = searchView
         searchView.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
-        newRouteTableView.rowHeight = 100
+        newRouteTableView.rowHeight = 60
         newRouteTableView.separatorStyle = .none
         newRouteTableView.backgroundColor = .backgroundColor()
     }
@@ -113,10 +113,13 @@ extension NewRouteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .identifireNewRouteCell, for: indexPath) as? NewRouteTableViewCell else { return UITableViewCell() }
         let place = presenter.locationsArray[indexPath.row]
+        let countRow = presenter.locationsArray.indices[indexPath.row] + 1
         cell.setupLabels(street: place.street,
                          buildingNumber: place.building,
                          postCode: place.postCode,
-                         city: place.city)
+                         city: place.city,
+                         subArea: place.subAdminArea,
+                         countRow: countRow)
         return cell
     }
 
