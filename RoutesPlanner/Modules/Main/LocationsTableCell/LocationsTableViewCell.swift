@@ -27,13 +27,6 @@ final class LocationsTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let discriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 10
-        label.backgroundColor = .systemGray5
-        return label
-    }()
-    
     private let countRowLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -41,6 +34,8 @@ final class LocationsTableViewCell: UITableViewCell {
         label.textColor = .blueGold()
         return label
     }()
+    
+    private let descriptionView = DescriptionView()
     
     // MARK: - Public
     
@@ -74,7 +69,7 @@ final class LocationsTableViewCell: UITableViewCell {
     // MARK: - Setup Subviews
 
     func setupSubviews() {
-        [cellView, countRowLabel, adressLabel, discriptionLabel, subAdressLabel, acceptButton, navigateButton, failedButton, undoButton].forEach { contentView.addSubview($0) }
+        [cellView, countRowLabel, adressLabel, descriptionView, subAdressLabel, acceptButton, navigateButton, failedButton, undoButton].forEach { contentView.addSubview($0) }
     }
 
     // MARK: - Setup Constraints
@@ -87,9 +82,9 @@ final class LocationsTableViewCell: UITableViewCell {
         countRowLabel.pin
             .top(to: cellView, offset: 4).trailing(to: cellView, offset: 5).height(to: 20).width(to: 20)
         subAdressLabel.pin
-            .below(of: adressLabel, offset: 1).leading(to: adressLabel).trailing(to: cellView, offset: 4).height(to: 20)
-        discriptionLabel.pin
-            .below(of: subAdressLabel, offset: 4).leading(to: adressLabel).bottom(to: cellView, offset: 5).before(of: acceptButton, offset: 4).height(to: 35)
+            .below(of: adressLabel, offset: 1).leading(to: adressLabel).before(of: acceptButton, offset: 1).height(to: 20)
+        descriptionView.pin
+            .below(of: subAdressLabel, offset: 4).leading(to: adressLabel).bottom(to: cellView, offset: 5).before(of: acceptButton, offset: 5)
         navigateButton.pin
             .bottom(to: cellView, offset: 4).trailing(to: cellView, offset: 8).width(to: 35).height(to: 35)
         failedButton.pin
@@ -109,6 +104,11 @@ final class LocationsTableViewCell: UITableViewCell {
         navigateButton.setImage(UIImage(named: "navigate"), for: .normal)
         undoButton.setImage(UIImage(named: "undo"), for: .normal)
         undoButton.isHidden = true
+        let client = ClientInfo()
+        client.apartmentNumber = "293"
+        client.clientName = "Alexander Hunko"
+        client.telNumber = "793018849"
+        descriptionView.setText(apartmentNumber: client.apartmentNumber, clientName: client.clientName, tel: client.telNumber)
     }
     
     // MARK: - Setup Bechavior
@@ -154,6 +154,6 @@ final class LocationsTableViewCell: UITableViewCell {
     }
     
     func labelsOpacity(value: Float) {
-        [adressLabel, subAdressLabel, countRowLabel].forEach { $0.layer.opacity = value }
+        [adressLabel, subAdressLabel, countRowLabel, descriptionView].forEach { $0.layer.opacity = value }
     }
 }
