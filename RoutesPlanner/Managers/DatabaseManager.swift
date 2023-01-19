@@ -35,4 +35,28 @@ final class DatabaseManager {
             location.isFailed = state
         }
     }
+    
+    func customerName(name: String, location: Location) {
+        try! realm.write {
+            location.nameCustomer = name
+        }
+    }
+    func customerFlat(flat: String, location: Location) {
+        try! realm.write {
+            location.flatCustomer = flat
+        }
+    }
+    func customerTel(tel: String, location: Location) {
+        try! realm.write {
+            location.telCustomer = tel
+        }
+    }
+    
+//    func addCustomerInfo(name: String, flat: String, tel: String, location: Location) {
+//        try! realm.write {
+//            location.nameCustomer = name
+//            location.flatCustomer = flat
+//            location.telCustomer = tel
+//        }
+//    }
 }
