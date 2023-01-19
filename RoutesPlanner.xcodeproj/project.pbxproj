@@ -11,7 +11,6 @@
 		DA1871FE297851B00095697A /* DetailAddressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FB297851AF0095697A /* DetailAddressRouter.swift */; };
 		DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FC297851AF0095697A /* DetailAddressViewController.swift */; };
 		DA187202297856A50095697A /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA187201297856A50095697A /* DescriptionView.swift */; };
-		DA1872042978691D0095697A /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1872032978691D0095697A /* ClientInfo.swift */; };
 		DA187207297880520095697A /* DetailsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA187206297880520095697A /* DetailsTextField.swift */; };
 		DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */; };
 		DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */; };
@@ -46,7 +45,6 @@
 		DA1871FB297851AF0095697A /* DetailAddressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressRouter.swift; sourceTree = "<group>"; };
 		DA1871FC297851AF0095697A /* DetailAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressViewController.swift; sourceTree = "<group>"; };
 		DA187201297856A50095697A /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
-		DA1872032978691D0095697A /* ClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		DA187206297880520095697A /* DetailsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTextField.swift; sourceTree = "<group>"; };
 		DAFB809A29571FDF00C4FA54 /* RoutesPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutesPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				DAFB80C829572A5400C4FA54 /* RouteModel.swift */,
 				DAFB80C629572A4B00C4FA54 /* LocationModel.swift */,
-				DA1872032978691D0095697A /* ClientInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,7 +352,6 @@
 				DAFB80E929572D1700C4FA54 /* RoutesTableCell.swift in Sources */,
 				DAFB80ED29572D5400C4FA54 /* RoutesPresenter.swift in Sources */,
 				DAFB80DD29572C4700C4FA54 /* NewRouteTableViewCell.swift in Sources */,
-				DA1872042978691D0095697A /* ClientInfo.swift in Sources */,
 				DAFB80CE29572AC700C4FA54 /* LocationsTableViewCell.swift in Sources */,
 				DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */,
 				DA187202297856A50095697A /* DescriptionView.swift in Sources */,

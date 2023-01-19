@@ -167,6 +167,10 @@ extension MainViewController: UITableViewDataSource {
                          city: location.city,
                          countRow: countRow)
 
+        cell.textInDescriptionView(apartmentNumber: location.flatCustomer,
+                                   clientName: location.nameCustomer,
+                                   tel: location.telCustomer)
+        
         if presenter.locationsArray[indexPath.row].isComplited == true || presenter.locationsArray[indexPath.row].isFailed == true {
             cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
             cell.labelsOpacity(value: OpacityValue.clear)

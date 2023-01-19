@@ -104,11 +104,6 @@ final class LocationsTableViewCell: UITableViewCell {
         navigateButton.setImage(UIImage(named: "navigate"), for: .normal)
         undoButton.setImage(UIImage(named: "undo"), for: .normal)
         undoButton.isHidden = true
-        let client = ClientInfo()
-        client.apartmentNumber = "293"
-        client.clientName = "Alexander Hunko"
-        client.telNumber = "793018849"
-        descriptionView.setText(apartmentNumber: client.apartmentNumber, clientName: client.clientName, tel: client.telNumber)
     }
     
     // MARK: - Setup Bechavior
@@ -144,6 +139,10 @@ final class LocationsTableViewCell: UITableViewCell {
         adressLabel.text = "\(street), \(numberBuilding)"
         subAdressLabel.text = "\(postCode), \(subArea), \(city)"
         countRowLabel.text = "\(countRow)"
+    }
+    
+    func textInDescriptionView(apartmentNumber: String, clientName: String, tel: String) {
+        descriptionView.setText(apartmentNumber: apartmentNumber, clientName: clientName, tel: tel)
     }
     
     func changesHideButton(acceptButtonHide: Bool, failedButtonHide: Bool, navigateButtonHide: Bool, undoButtonHide: Bool) {
