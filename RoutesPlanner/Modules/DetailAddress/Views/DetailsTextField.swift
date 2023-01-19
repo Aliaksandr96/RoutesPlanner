@@ -14,7 +14,6 @@ final class DetailsTextField: UIView {
     
     private let titleLabel = UILabel()
     private let mainTextField = UITextField()
-    private let separatorView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,6 +53,10 @@ final class DetailsTextField: UIView {
     // MARK: - API
     func setTitle(_ title: String) {
         titleLabel.text = title
+    }
+    
+    func setPlaceholder(_ placeHolder: String) {
+        mainTextField.placeholder = placeHolder
     }
     func setKeyboardType(_ type: UIKeyboardType) {
         mainTextField.keyboardType = type
