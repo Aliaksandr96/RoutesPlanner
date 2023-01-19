@@ -11,4 +11,7 @@ class Location: Object {
     @objc dynamic var longitude: Double = 0
     @objc dynamic var isComplited: Bool = false
     @objc dynamic var isFailed: Bool = false
+    @objc dynamic var nameCustomer: String = ""
+    @objc dynamic var flatCustomer: String = ""
+    @objc dynamic var telCustomer: String = ""
 }
