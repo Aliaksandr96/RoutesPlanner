@@ -3,6 +3,7 @@ import EasyAutolayout
 
 protocol DetailAddressViewProtocol: AnyObject {
     func updateLabels(buildNumber: String, street: String, postCode: String, subArea: String, city: String)
+    func setupPlaceholders(name: String, flat: String, tel: String)
 }
 
 final class DetailAddressViewController: UIViewController {
@@ -69,6 +70,9 @@ final class DetailAddressViewController: UIViewController {
         nameTextField.setTitle("Name:")
         flatNumberTextField.setTitle("Flat Number:")
         telTexfField.setTitle("Tel:")
+        nameTextField.isAutocorrectionEnabled = false
+        telTexfField.setKeyboardType(.numberPad)
+        flatNumberTextField.setKeyboardType(.numberPad)
     }
     private func setupBehavior() {
         dissmissViewButton.addTarget(self, action: #selector(dissmissViewButtonDidTapped), for: .touchUpInside)
@@ -77,6 +81,9 @@ final class DetailAddressViewController: UIViewController {
     // MARK: - Helpers
     @objc private func dissmissViewButtonDidTapped() {
         presenter.dissmisView()
+        presenter.updateCustomerInfo(name: nameTextField.text,
+                                     flat: flatNumberTextField.text,
+                                     tel: telTexfField.text)
     }
 }
 
@@ -85,5 +92,10 @@ extension DetailAddressViewController: DetailAddressViewProtocol {
     func updateLabels(buildNumber: String, street: String, postCode: String, subArea: String, city: String) {
         addressLabel.text = "\(street), \(buildNumber)"
         subAddresLabel.text = "\(city), \(postCode), \(subArea)"
+    }
+    func setupPlaceholders(name: String, flat: String, tel: String) {
+        nameTextField.setPlaceholder(name)
+        flatNumberTextField.setPlaceholder(flat)
+        telTexfField.setPlaceholder(tel)
     }
 }
