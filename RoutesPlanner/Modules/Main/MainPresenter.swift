@@ -29,7 +29,7 @@ final class MainPresenter {
 
     // MARK: - Variables
 
-    var locationsArray: [Location] = [] 
+    var locationsArray: [Location] = []
 
     init(view: MainViewProtocol, router: MainRouterProtocol) {
         self.view = view
@@ -44,6 +44,7 @@ extension MainPresenter: MainPresenterProtocol {
     func openDetailView(location: Location) {
         router.openDetailAddressView(location: location)
     }
+
     func openNewRouteView() {
         router.openNewRouteModule { [weak self] transferLocations in
             self?.locationsArray.removeAll()
@@ -67,13 +68,12 @@ extension MainPresenter: MainPresenterProtocol {
 
     func viewDidLoaded() {
         let resultRealmObject = DatabaseManager.shared.getRoute()
-        print(resultRealmObject)
         guard let lastLocation = resultRealmObject.last?.location else { return }
         locationsArray.append(contentsOf: lastLocation.sorted { $0.postCode < $1.postCode })
         addAllAnnotations()
         view.updateLocationsTable()
     }
-    
+
     func checkEmptyArray() {
         if locationsArray.isEmpty == true {
             view.emptyRouteNewButtonState(state: false)

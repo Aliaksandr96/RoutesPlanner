@@ -1,7 +1,6 @@
 import UIKit
 
 final class DetailsTextField: UIView {
-    
     var text: String {
         mainTextField.text ?? ""
     }
@@ -21,15 +20,17 @@ final class DetailsTextField: UIView {
         setupConstraints()
         configureUI()
     }
+
     private func setupSubviews() {
         addSubview(mainTextField)
         addSubview(titleLabel)
     }
+
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant:  -8).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
         
         mainTextField.translatesAutoresizingMaskIntoConstraints = false
         mainTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
@@ -37,6 +38,7 @@ final class DetailsTextField: UIView {
         mainTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
         mainTextField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4).isActive = true
     }
+
     private func configureUI() {
         titleLabel.font = .systemFont(ofSize: 12)
         titleLabel.textColor = .blackGold()
@@ -44,13 +46,15 @@ final class DetailsTextField: UIView {
         layer.borderWidth = 1
         layer.borderColor = UIColor.systemBlue.cgColor
         layer.cornerRadius = 15
-        
     }
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - API
+
     func setTitle(_ title: String) {
         titleLabel.text = title
     }
@@ -58,6 +62,7 @@ final class DetailsTextField: UIView {
     func setPlaceholder(_ placeHolder: String) {
         mainTextField.placeholder = placeHolder
     }
+
     func setKeyboardType(_ type: UIKeyboardType) {
         mainTextField.keyboardType = type
     }
