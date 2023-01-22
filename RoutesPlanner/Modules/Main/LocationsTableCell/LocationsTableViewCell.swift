@@ -12,14 +12,14 @@ final class LocationsTableViewCell: UITableViewCell {
         view.layer.borderWidth = 1
         return view
     }()
-
+    
     private let adressLabel: UILabel = {
         let label = UILabel()
         label.textColor = .blackGold()
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
-
+    
     private let subAdressLabel: UILabel = {
         let label = UILabel()
         label.textColor = .grayWhite()
@@ -29,20 +29,24 @@ final class LocationsTableViewCell: UITableViewCell {
     
     private let countRowLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textAlignment = .center
         label.textColor = .blueGold()
         return label
     }()
     
+    let deliveryComplitedLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let descriptionView = DescriptionView()
-    
-    // MARK: - Public
-    
-    let acceptButton = UIButton()
-    let navigateButton = UIButton()
-    let failedButton = UIButton()
-    let undoButton = UIButton()
+    private let acceptButton = UIButton()
+    private let navigateButton = UIButton()
+    private let failedButton = UIButton()
+    private let undoButton = UIButton()
     
     // MARK: - Variables
     
@@ -50,11 +54,12 @@ final class LocationsTableViewCell: UITableViewCell {
     var navigateClosure: (() -> Void)?
     var failedClosure: (() -> Void)?
     var undoClosure: (() -> Void)?
+    var deliveryStateSetup: Bool = true
     
     // MARK: - Initialize
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: .identifireLocationsTableViewCell)
-
         setupSubviews()
         setupConstraints()
         configureUI()
@@ -69,7 +74,7 @@ final class LocationsTableViewCell: UITableViewCell {
     // MARK: - Setup Subviews
 
     func setupSubviews() {
-        [cellView, countRowLabel, adressLabel, descriptionView, subAdressLabel, acceptButton, navigateButton, failedButton, undoButton].forEach { contentView.addSubview($0) }
+        [cellView, countRowLabel, deliveryComplitedLabel, adressLabel, descriptionView, subAdressLabel, acceptButton, navigateButton, failedButton, undoButton].forEach { contentView.addSubview($0) }
     }
 
     // MARK: - Setup Constraints
@@ -77,33 +82,40 @@ final class LocationsTableViewCell: UITableViewCell {
     func setupConstraints() {
         cellView.pin
             .top(to: contentView, offset: 5).leading(to: contentView, offset: 10).trailing(to: contentView, offset: 10).bottom(to: contentView)
-        adressLabel.pin
-            .top(to: cellView, offset: 4).leading(to: cellView, offset: 10).trailing(to: cellView, offset: 26).height(to: 20)
         countRowLabel.pin
-            .top(to: cellView, offset: 4).trailing(to: cellView, offset: 5).height(to: 20).width(to: 20)
+            .top(to: cellView, offset: 5).leading(to: cellView, offset: 5).height(to: 20).width(to: 20)
+        adressLabel.pin
+            .top(to: cellView, offset: 5).after(of: countRowLabel, offset: 3).before(of: acceptButton, offset: 2).height(to: 20)
         subAdressLabel.pin
-            .below(of: adressLabel, offset: 1).leading(to: adressLabel).before(of: acceptButton, offset: 1).height(to: 20)
+            .below(of: adressLabel, offset: 2).leading(to: adressLabel).before(of: acceptButton, offset: 1).height(to: 16)
         descriptionView.pin
-            .below(of: subAdressLabel, offset: 4).leading(to: adressLabel).bottom(to: cellView, offset: 5).before(of: acceptButton, offset: 5)
-        navigateButton.pin
-            .bottom(to: cellView, offset: 4).trailing(to: cellView, offset: 8).width(to: 35).height(to: 35)
-        failedButton.pin
-            .before(of: navigateButton, offset: 8).bottom(to: navigateButton).width(to: 35).height(to: 35)
+            .below(of: subAdressLabel, offset: 5).leading(to: adressLabel).bottom(to: cellView, offset: 7).before(of: acceptButton, offset: 5)
         acceptButton.pin
-            .before(of: failedButton, offset: 8).bottom(to: navigateButton).width(to: 35).height(to: 35)
+            .top(to: cellView, offset: 4).trailing(to: cellView, offset: 5).width(to: 75).height(to: 32)
+        failedButton.pin
+            .below(of: acceptButton, offset: 4).trailing(to: cellView, offset: 5).width(to: 75).height(to: 32)
+        navigateButton.pin
+            .below(of: failedButton, offset: 4).trailing(to: cellView, offset: 5).width(to: 75).height(to: 32)
         undoButton.pin
-            .before(of: navigateButton, offset: 8).bottom(to: navigateButton).width(to: 35).height(to: 35)
+            .below(of: failedButton, offset: 4).trailing(to: cellView, offset: 5).width(to: 75).height(to: 32)
+        deliveryComplitedLabel.pin
+            .above(of: navigateButton, offset: 5).height(to: 20).width(to: navigateButton).trailing(to: cellView, offset: 5)
     }
 
     // MARK: - ConfigureUI
 
     func configureUI() {
         contentView.backgroundColor = .backgroundColor()
-        acceptButton.setImage(UIImage(named: "accept"), for: .normal)
-        failedButton.setImage(UIImage(named: "failed"), for: .normal)
-        navigateButton.setImage(UIImage(named: "navigate"), for: .normal)
-        undoButton.setImage(UIImage(named: "undo"), for: .normal)
+        countRowLabel.textColor = .blueGold()
+        createCellButton(button: acceptButton, systemImageName: "shippingbox", imageColor: .pinGreen(), textTitle: "Accept", tintText: .blueGold())
+        createCellButton(button: failedButton, systemImageName: "shippingbox", imageColor: .pinRed(), textTitle: "Failed", tintText: .blueGold())
+        createCellButton(button: navigateButton, systemImageName: "location.fill", imageColor: .white, textTitle: "Navigate", tintText: .white)
+        createCellButton(button: undoButton, systemImageName: "arrowshape.turn.up.left.fill", imageColor: .white, textTitle: "Undo", tintText: .white)
+        navigateButton.backgroundColor = .pinBlue()
+        undoButton.backgroundColor = .pinBlue()
         undoButton.isHidden = true
+        deliveryComplitedLabel.isHidden = true
+        descriptionView.isEditableView(state: false)
     }
     
     // MARK: - Setup Bechavior
@@ -145,14 +157,43 @@ final class LocationsTableViewCell: UITableViewCell {
         descriptionView.setText(apartmentNumber: apartmentNumber, clientName: clientName, tel: tel)
     }
     
-    func changesHideButton(acceptButtonHide: Bool, failedButtonHide: Bool, navigateButtonHide: Bool, undoButtonHide: Bool) {
+    func changesHideButton(acceptButtonHide: Bool, failedButtonHide: Bool, navigateButtonHide: Bool, undoButtonHide: Bool, deliveryLabel: Bool) {
         acceptButton.isHidden = acceptButtonHide
         failedButton.isHidden = failedButtonHide
         navigateButton.isHidden = navigateButtonHide
         undoButton.isHidden = undoButtonHide
+        deliveryComplitedLabel.isHidden = deliveryLabel
     }
     
     func labelsOpacity(value: Float) {
         [adressLabel, subAdressLabel, countRowLabel, descriptionView].forEach { $0.layer.opacity = value }
+    }
+    
+    func deliveryLabelState(state: Bool) {
+        if state == true {
+            deliveryComplitedLabel.text = "Complete"
+            deliveryComplitedLabel.textColor = .pinGreen()
+        }
+        if state == false {
+            deliveryComplitedLabel.text = "Failed"
+            deliveryComplitedLabel.textColor = .pinRed()
+        }
+    }
+}
+
+extension LocationsTableViewCell {
+    private func createCellButton(button: UIButton, systemImageName: String, imageColor: UIColor, textTitle: String, tintText: UIColor) {
+        button.layer.borderColor = UIColor.systemBlue.cgColor
+        button.layer.borderWidth = 0.5
+        button.layer.cornerRadius = 8
+        let configuration = UIImage.SymbolConfiguration(pointSize: 11, weight: .light)
+        var borderlessConfigure = UIButton.Configuration.borderless()
+        borderlessConfigure.attributedTitle = AttributedString(textTitle,
+                                                               attributes: .init([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11),
+                                                                                  NSAttributedString.Key.foregroundColor: tintText]))
+        borderlessConfigure.image = UIImage(systemName: systemImageName, withConfiguration: configuration)?.withTintColor(imageColor, renderingMode: .alwaysOriginal)
+        borderlessConfigure.imagePlacement = .top
+        borderlessConfigure.imagePadding = 1
+        button.configuration = borderlessConfigure
     }
 }
