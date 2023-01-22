@@ -133,7 +133,7 @@ extension NewRouteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.openDetailView(location: presenter.locationsArray[indexPath.row])
+        
     }
 }
 
