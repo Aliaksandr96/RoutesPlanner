@@ -13,15 +13,15 @@ final class DetailAddressViewController: UIViewController {
     // MARK: - Private
     
     private let addressLabel: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 22)
-       return label
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        return label
     }()
     
     private let subAddresLabel: UILabel = {
-       let label = UILabel()
-       label.font = UIFont.systemFont(ofSize: 20)
-       return label
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        return label
     }()
     
     private let nameTextField = DetailsTextField()
@@ -56,14 +56,13 @@ final class DetailAddressViewController: UIViewController {
         addressLabel.pin
             .below(of: dissmissViewButton, offset: 40).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 30)
         subAddresLabel.pin
-            .below(of: addressLabel, offset: 20).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 30)
+            .below(of: addressLabel, offset: 10).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 30)
         nameTextField.pin
-            .below(of: subAddresLabel, offset: 20).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 55)
+            .below(of: subAddresLabel, offset: 10).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 55)
         flatNumberTextField.pin
-            .below(of: nameTextField, offset: 20).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 55)
+            .below(of: nameTextField, offset: 10).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 55)
         telTexfField.pin
-            .below(of: flatNumberTextField, offset: 20).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 55)
-        
+            .below(of: flatNumberTextField, offset: 10).leading(to: view, offset: 20).trailing(to: view, offset: 20).height(to: 55)
     }
     private func configureUI() {
         view.backgroundColor = .backgroundColor()
@@ -84,6 +83,7 @@ final class DetailAddressViewController: UIViewController {
         presenter.updateCustomerInfo(name: nameTextField.text,
                                      flat: flatNumberTextField.text,
                                      tel: telTexfField.text)
+        presenter.saveInfoCustomerFromTextFields()
     }
 }
 
