@@ -90,7 +90,7 @@
 		DA1871F9297851880095697A /* DetailAddress */ = {
 			isa = PBXGroup;
 			children = (
-				DA187205297880290095697A /* Views */,
+				DAF2E6A2297DB63100E21471 /* Views */,
 				DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */,
 				DA1871FB297851AF0095697A /* DetailAddressRouter.swift */,
 				DA1871FC297851AF0095697A /* DetailAddressViewController.swift */,
@@ -98,18 +98,25 @@
 			path = DetailAddress;
 			sourceTree = "<group>";
 		};
-		DA1872002978568C0095697A /* Views */ = {
+		DA187205297880290095697A /* Support Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA187201297856A50095697A /* DescriptionView.swift */,
+			);
+			path = "Support Views";
+			sourceTree = "<group>";
+		};
+		DAF2E6A2297DB63100E21471 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA187206297880520095697A /* DetailsTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DA187205297880290095697A /* Views */ = {
+		DAF2E6A3297DB64A00E21471 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DA187206297880520095697A /* DetailsTextField.swift */,
+				DA187201297856A50095697A /* DescriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 				DAFB80CA29572A9F00C4FA54 /* Modules */,
 				DAFB80C529572A3E00C4FA54 /* Models */,
 				DAFB80BA2957283100C4FA54 /* Managers */,
+				DA187205297880290095697A /* Support Views */,
 				DAFB80B32957279A00C4FA54 /* Extensions */,
 				DAFB80B22957248300C4FA54 /* Application */,
 				DAFB80B12957246200C4FA54 /* Resources */,
@@ -215,8 +223,8 @@
 		DAFB80CC29572AB800C4FA54 /* LocationsTableCell */ = {
 			isa = PBXGroup;
 			children = (
+				DAF2E6A3297DB64A00E21471 /* Views */,
 				DAFB80CD29572AC700C4FA54 /* LocationsTableViewCell.swift */,
-				DA1872002978568C0095697A /* Views */,
 			);
 			path = LocationsTableCell;
 			sourceTree = "<group>";
@@ -224,8 +232,8 @@
 		DAFB80D529572B7100C4FA54 /* NewRoute */ = {
 			isa = PBXGroup;
 			children = (
-				DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */,
 				DAFB80E229572CC500C4FA54 /* NewRoutePresenter.swift */,
+				DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */,
 				DAFB80E029572CA900C4FA54 /* NewRouteViewController.swift */,
 				DAFB80DE29572C8600C4FA54 /* SearchResultTableViewController.swift */,
 				DAFB80DB29572C3700C4FA54 /* NewRouteTableViewCell */,
