@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */; };
+		DA1871FE297851B00095697A /* DetailAddressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FB297851AF0095697A /* DetailAddressRouter.swift */; };
+		DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1871FC297851AF0095697A /* DetailAddressViewController.swift */; };
+		DA187202297856A50095697A /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA187201297856A50095697A /* DescriptionView.swift */; };
+		DA187207297880520095697A /* DetailsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA187206297880520095697A /* DetailsTextField.swift */; };
 		DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */; };
 		DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */; };
 		DAFB80A729571FE000C4FA54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFB80A629571FE000C4FA54 /* Assets.xcassets */; };
@@ -36,6 +41,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressPresenter.swift; sourceTree = "<group>"; };
+		DA1871FB297851AF0095697A /* DetailAddressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressRouter.swift; sourceTree = "<group>"; };
+		DA1871FC297851AF0095697A /* DetailAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAddressViewController.swift; sourceTree = "<group>"; };
+		DA187201297856A50095697A /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		DA187206297880520095697A /* DetailsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTextField.swift; sourceTree = "<group>"; };
 		DAFB809A29571FDF00C4FA54 /* RoutesPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoutesPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFB809D29571FDF00C4FA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFB809F29571FDF00C4FA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +87,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA1871F9297851880095697A /* DetailAddress */ = {
+			isa = PBXGroup;
+			children = (
+				DAF2E6A2297DB63100E21471 /* Views */,
+				DA1871FA297851AF0095697A /* DetailAddressPresenter.swift */,
+				DA1871FB297851AF0095697A /* DetailAddressRouter.swift */,
+				DA1871FC297851AF0095697A /* DetailAddressViewController.swift */,
+			);
+			path = DetailAddress;
+			sourceTree = "<group>";
+		};
+		DA187205297880290095697A /* Support Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Support Views";
+			sourceTree = "<group>";
+		};
+		DAF2E6A2297DB63100E21471 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA187206297880520095697A /* DetailsTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DAF2E6A3297DB64A00E21471 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA187201297856A50095697A /* DescriptionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DAFB809129571FDF00C4FA54 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +143,7 @@
 				DAFB80CA29572A9F00C4FA54 /* Modules */,
 				DAFB80C529572A3E00C4FA54 /* Models */,
 				DAFB80BA2957283100C4FA54 /* Managers */,
+				DA187205297880290095697A /* Support Views */,
 				DAFB80B32957279A00C4FA54 /* Extensions */,
 				DAFB80B22957248300C4FA54 /* Application */,
 				DAFB80B12957246200C4FA54 /* Resources */,
@@ -156,6 +201,7 @@
 		DAFB80CA29572A9F00C4FA54 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DA1871F9297851880095697A /* DetailAddress */,
 				DAFB80E629572D0300C4FA54 /* Routes */,
 				DAFB80D529572B7100C4FA54 /* NewRoute */,
 				DAFB80CB29572AAE00C4FA54 /* Main */,
@@ -177,6 +223,7 @@
 		DAFB80CC29572AB800C4FA54 /* LocationsTableCell */ = {
 			isa = PBXGroup;
 			children = (
+				DAF2E6A3297DB64A00E21471 /* Views */,
 				DAFB80CD29572AC700C4FA54 /* LocationsTableViewCell.swift */,
 			);
 			path = LocationsTableCell;
@@ -185,8 +232,8 @@
 		DAFB80D529572B7100C4FA54 /* NewRoute */ = {
 			isa = PBXGroup;
 			children = (
-				DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */,
 				DAFB80E229572CC500C4FA54 /* NewRoutePresenter.swift */,
+				DAFB80E429572CDE00C4FA54 /* NewRouteRouter.swift */,
 				DAFB80E029572CA900C4FA54 /* NewRouteViewController.swift */,
 				DAFB80DE29572C8600C4FA54 /* SearchResultTableViewController.swift */,
 				DAFB80DB29572C3700C4FA54 /* NewRouteTableViewCell */,
@@ -300,17 +347,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFB80C729572A4C00C4FA54 /* LocationModel.swift in Sources */,
+				DA1871FF297851B00095697A /* DetailAddressViewController.swift in Sources */,
 				DAFB80D429572B4300C4FA54 /* MainViewController.swift in Sources */,
 				DAFB80B7295727D900C4FA54 /* Identifire+Extension.swift in Sources */,
+				DA187207297880520095697A /* DetailsTextField.swift in Sources */,
 				DAFB809E29571FDF00C4FA54 /* AppDelegate.swift in Sources */,
 				DAFB80C929572A5400C4FA54 /* RouteModel.swift in Sources */,
 				DAFB80BC2957287700C4FA54 /* DatabaseManager.swift in Sources */,
+				DA1871FE297851B00095697A /* DetailAddressRouter.swift in Sources */,
 				DAFB80D229572B2400C4FA54 /* MainRouter.swift in Sources */,
 				DAFB80BE2957287E00C4FA54 /* LocationManager.swift in Sources */,
 				DAFB80E929572D1700C4FA54 /* RoutesTableCell.swift in Sources */,
 				DAFB80ED29572D5400C4FA54 /* RoutesPresenter.swift in Sources */,
 				DAFB80DD29572C4700C4FA54 /* NewRouteTableViewCell.swift in Sources */,
 				DAFB80CE29572AC700C4FA54 /* LocationsTableViewCell.swift in Sources */,
+				DA1871FD297851AF0095697A /* DetailAddressPresenter.swift in Sources */,
+				DA187202297856A50095697A /* DescriptionView.swift in Sources */,
 				DAFB80A029571FDF00C4FA54 /* SceneDelegate.swift in Sources */,
 				DAFB80E529572CDE00C4FA54 /* NewRouteRouter.swift in Sources */,
 				DAFB80EF29572D7B00C4FA54 /* RoutesRouter.swift in Sources */,
@@ -462,8 +514,10 @@
 				DEVELOPMENT_TEAM = 4XKQ66453D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoutesPlanner/Resources/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -489,8 +543,10 @@
 				DEVELOPMENT_TEAM = 4XKQ66453D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RoutesPlanner/Resources/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, allow your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (

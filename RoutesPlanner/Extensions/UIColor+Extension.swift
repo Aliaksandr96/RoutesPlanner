@@ -1,6 +1,9 @@
 import UIKit
 
 extension UIColor {
+    static func grayTextViewBackground() -> UIColor {
+        UIColor(named: "grayTextViewBackground")!
+    }
     static func backgroundColor() -> UIColor {
         UIColor(named: "backgroundColor")!
     }

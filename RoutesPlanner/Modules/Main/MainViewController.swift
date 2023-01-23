@@ -6,12 +6,9 @@ protocol MainViewProtocol: AnyObject {
     func updateLocationsTable()
     func addAnnotationOnMap(annotation: MKAnnotation)
     func setRegion(region: MKCoordinateRegion)
-    func removeAllAnatations()
-}
-
-enum OpacityValue: Float {
-    case clear = 0.25
-    case normal = 1
+    func removeAllAnatationsAndOverlays()
+    func emptyRouteNewButtonState(state: Bool)
+    var mapView: MKMapView { get }
 }
 
 final class MainViewController: UIViewController {
@@ -21,10 +18,21 @@ final class MainViewController: UIViewController {
 
     // MARK: - Private
 
-    private let mapView = MKMapView()
+    var mapView = MKMapView()
+
     private let backgroundTableView = UIView()
     private let locationsTableView = UITableView()
     private let localizeCityButton = UIButton()
+    private let emptyRoutesNewButton = UIButton()
+
+    private enum Constants {
+        static let clearOpacity: Float = 0.25
+        static let normalOpacity: Float = 1
+        static let cornerRadius: CGFloat = 15
+        static let locilizeCityButtonSize: CGFloat = 30
+        static let borderWidthSize: CGFloat = 1
+        static let tableRowHeightSize: CGFloat = 120
+    }
 
     // MARK: - Lifecycle
 
@@ -39,12 +47,14 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.localizeCity()
+        presenter.checkEmptyArrayAndShowNewRouteButton()
     }
 
     // MARK: - Setup Subviews
 
     private func setupSubviews() {
-        [mapView, backgroundTableView, locationsTableView, localizeCityButton].forEach { view.addSubview($0) }
+        [mapView, backgroundTableView, localizeCityButton, emptyRoutesNewButton].forEach { view.addSubview($0) }
+        backgroundTableView.addSubview(locationsTableView)
     }
 
     // MARK: - Setup Constraints
@@ -53,25 +63,34 @@ final class MainViewController: UIViewController {
         mapView.pin
             .top(to: view.safeAreaLayoutGuide).width(to: view).height(to: view, multiplier: 1 / 1.8)
         backgroundTableView.pin
-            .below(of: mapView, offset: -40).width(to: view).bottom(to: view)
+            .below(of: mapView, offset: -40).bottom(to: view, offset: -1).leading(to: view, offset: 1).trailing(to: view, offset: 1)
         locationsTableView.pin
-            .top(to: backgroundTableView, offset: 15).width(to: backgroundTableView).bottom(to: view)
+            .top(to: backgroundTableView, offset: 15).bottom(to: view, offset: 2).leading(to: view, offset: 2).trailing(to: view, offset: 2)
         localizeCityButton.pin
             .above(of: backgroundTableView, offset: 10).leading(to: mapView, offset: 10).width(to: 30).height(to: 30)
+        emptyRoutesNewButton.pin
+            .center(in: backgroundTableView).width(to: 200).height(to: 50)
     }
 
     // MARK: - Configure UI
 
     private func configureUI() {
         view.backgroundColor = .backgroundColor()
-        backgroundTableView.layer.cornerRadius = 20 
+        backgroundTableView.layer.cornerRadius = Constants.cornerRadius
+        backgroundTableView.layer.borderColor = UIColor.systemBlue.cgColor
+        backgroundTableView.layer.borderWidth = Constants.borderWidthSize
         [locationsTableView, backgroundTableView].forEach { $0.backgroundColor = .backgroundColor() }
         backgroundTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        locationsTableView.rowHeight = 100
+        locationsTableView.rowHeight = Constants.tableRowHeightSize
         locationsTableView.separatorStyle = .none
-        
-        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
+
+        let configuration = UIImage.SymbolConfiguration(pointSize: Constants.locilizeCityButtonSize, weight: .bold)
         localizeCityButton.setImage(UIImage(systemName: "location.circle.fill", withConfiguration: configuration), for: .normal)
+
+        emptyRoutesNewButton.setTitle("New Route", for: .normal)
+        emptyRoutesNewButton.backgroundColor = .pinBlue()
+        emptyRoutesNewButton.setTitleColor(.white, for: .normal)
+        emptyRoutesNewButton.layer.cornerRadius = Constants.cornerRadius
     }
 
     // MARK: - Setup Behavior
@@ -87,9 +106,14 @@ final class MainViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New Route", style: .plain, target: self, action: #selector(newButtonDidTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Routes", style: .plain, target: self, action: #selector(routesButtonDidTapped))
+        emptyRoutesNewButton.addTarget(self, action: #selector(emptyRoutesNewButtonDidTapped), for: .touchUpInside)
     }
 
     // MARK: - Helpers
+
+    @objc private func emptyRoutesNewButtonDidTapped() {
+        presenter.openNewRouteView()
+    }
 
     @objc private func newButtonDidTapped() {
         presenter.openNewRouteView()
@@ -107,6 +131,10 @@ final class MainViewController: UIViewController {
 // MARK: - MainProtocol
 
 extension MainViewController: MainViewProtocol {
+    func emptyRouteNewButtonState(state: Bool) {
+        emptyRoutesNewButton.isHidden = state
+    }
+
     func updateLocationsTable() {
         locationsTableView.reloadData()
     }
@@ -115,8 +143,13 @@ extension MainViewController: MainViewProtocol {
         mapView.addAnnotation(annotation)
     }
 
-    func removeAllAnatations() {
+    func addOverlaysOnMap(overlays: [MKOverlay]) {
+        mapView.addOverlays(overlays)
+    }
+
+    func removeAllAnatationsAndOverlays() {
         mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
     }
 
     func setRegion(region: MKCoordinateRegion) {
@@ -134,34 +167,47 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: .identifireLocationsTableViewCell, for: indexPath) as? LocationsTableViewCell else { return UITableViewCell() }
         let location = presenter.locationsArray[indexPath.row]
+        let countRow = presenter.locationsArray.indices[indexPath.row] + 1
         cell.setupLabels(numberBuilding: location.building,
                          street: location.street,
                          postCode: location.postCode,
                          subArea: location.subAdminArea,
-                         city: location.city)
+                         city: location.city,
+                         countRow: countRow)
+
+        if presenter.locationsArray[indexPath.row].isComplited == true {
+            cell.deliveryLabelState(state: true)
+        }
+        if presenter.locationsArray[indexPath.row].isFailed == true {
+            cell.deliveryLabelState(state: false)
+        }
+
+        cell.textInDescriptionView(apartmentNumber: location.flatCustomer,
+                                   clientName: location.nameCustomer,
+                                   tel: location.telCustomer)
 
         if presenter.locationsArray[indexPath.row].isComplited == true || presenter.locationsArray[indexPath.row].isFailed == true {
-            cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
-            cell.labelsOpacity(value: OpacityValue.clear.rawValue)
+            cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false, deliveryLabel: false)
+            cell.labelsOpacity(value: Constants.clearOpacity)
         } else {
-            cell.changesHideButton(acceptButtonHide: false, failedButtonHide: false, navigateButtonHide: false, undoButtonHide: true)
-            cell.labelsOpacity(value: OpacityValue.normal.rawValue)
+            cell.changesHideButton(acceptButtonHide: false, failedButtonHide: false, navigateButtonHide: false, undoButtonHide: true, deliveryLabel: true)
+            cell.labelsOpacity(value: Constants.normalOpacity)
         }
 
         cell.acceptClosure = { [weak self] in
             guard let self = self else { return }
-            cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
-            cell.labelsOpacity(value: OpacityValue.clear.rawValue)
-            self.presenter.isCompletedPlace(state: true, location: location)
-            self.presenter.setupAcceptAnnotation(mapView: self.mapView, location: location)
+            cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false, deliveryLabel: false)
+            cell.labelsOpacity(value: Constants.clearOpacity)
+            cell.deliveryLabelState(state: true)
+            self.presenter.setupAcceptAnnotation(mapView: self.mapView, location: location, isCompleted: true)
         }
 
         cell.failedClosure = { [weak self] in
             guard let self = self else { return }
-            cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false)
-            cell.labelsOpacity(value: OpacityValue.clear.rawValue)
-            self.presenter.isFailedPlace(state: true, location: location)
-            self.presenter.setupFailedAnnotation(mapView: self.mapView, location: location)
+            cell.changesHideButton(acceptButtonHide: true, failedButtonHide: true, navigateButtonHide: true, undoButtonHide: false, deliveryLabel: false)
+            cell.labelsOpacity(value: Constants.clearOpacity)
+            cell.deliveryLabelState(state: false)
+            self.presenter.setupFailedAnnotation(mapView: self.mapView, location: location, isFailed: true)
         }
 
         cell.navigateClosure = { [weak self] in
@@ -170,12 +216,10 @@ extension MainViewController: UITableViewDataSource {
 
         cell.undoClosure = { [weak self] in
             guard let self = self else { return }
-            cell.changesHideButton(acceptButtonHide: false, failedButtonHide: false, navigateButtonHide: false, undoButtonHide: true)
-            cell.labelsOpacity(value: OpacityValue.normal.rawValue)
-            self.presenter.isCompletedPlace(state: false, location: location)
-            self.presenter.isFailedPlace(state: false, location: location)
-            self.presenter.setupAcceptAnnotation(mapView: self.mapView, location: location)
-            self.presenter.setupFailedAnnotation(mapView: self.mapView, location: location)
+            cell.changesHideButton(acceptButtonHide: false, failedButtonHide: false, navigateButtonHide: false, undoButtonHide: true, deliveryLabel: true)
+            cell.labelsOpacity(value: Constants.normalOpacity)
+            self.presenter.setupAcceptAnnotation(mapView: self.mapView, location: location, isCompleted: false)
+            self.presenter.setupFailedAnnotation(mapView: self.mapView, location: location, isFailed: false)
         }
         return cell
     }
@@ -185,14 +229,13 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let location = presenter.locationsArray[indexPath.row]
-        presenter.localizePlace(location: location)
+        presenter.openDetailViewAndSetLocation(location: presenter.locationsArray[indexPath.row])
     }
 }
 
-// MARK: - MK Map View Delegate
-
 extension MainViewController: MKMapViewDelegate {
+    // MARK: - Annotation View Appearance
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
 
@@ -212,5 +255,14 @@ extension MainViewController: MKMapViewDelegate {
             annotationView.glyphImage = UIImage(systemName: "shippingbox")
         }
         return annotationView
+    }
+
+    // MARK: - Overlay Apperance
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .pinBlue()
+        renderer.lineWidth = 5.0
+        return renderer
     }
 }

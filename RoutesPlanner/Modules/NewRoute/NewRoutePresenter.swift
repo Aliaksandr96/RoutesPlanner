@@ -51,7 +51,7 @@ extension NewRoutePresenter: NewRoutePresenterProtocol {
         let route = Route()
         route.dateSaving = Date.formating(date: Date())
         route.nameRoute = Date.routeDay()
-        route.location.append(objectsIn: locationsArray)
+        route.location.append(objectsIn: locationsArray.sorted { $0.postCode < $1.postCode })
         DatabaseManager.shared.saveRoute(route: route)
     }
 
@@ -60,6 +60,6 @@ extension NewRoutePresenter: NewRoutePresenterProtocol {
     }
 
     func transferCurrentLocationsArrayToMainTable(locations: [Location]) {
-        transferLocationsArray?(locationsArray)
+        transferLocationsArray?(locationsArray.sorted { $0.postCode < $1.postCode })
     }
 }
